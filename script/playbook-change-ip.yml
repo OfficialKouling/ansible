@@ -1,0 +1,23 @@
+---
+- name: Change hostname
+  hosts: serv1
+  become: yes
+
+  tasks:
+   - name: Change hostname
+     lineinfile:
+      path: /etc/hostname
+      regexp: '^(.*)server(.*)$'
+      line: 'server167'
+      backrefs: yes
+
+   - name: Change IP
+     lineinfile:
+      path: /etc/netplan/00-installer-config.yaml
+      regexp: '^(.*)192.168.1.167/24(.*)$'
+      line: '      addresses: [192.168.1.168/24]'
+      backrefs: yes
+        
+   - shell: "netplan apply"
+     async: 5
+     poll: 0

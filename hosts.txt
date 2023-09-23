@@ -1,0 +1,17 @@
+[ANSIBLE_MAKE]
+serv1 ansible_host=192.168.1.167
+
+[ANSIBLE_MAKE:vars]
+ansible_user=koul
+ansible_password=ret123
+ansible_become_pass=ret123
+
+
+
+[ANSIBLE_SERVERS:vars]
+ansible_user=koul
+ansible_password=ret123
+ansible_become_pass=ret123
+
+[ANSIBLE_SERVERS]
+serv180 ansible_host=192.168.1.180 ansible_user=koul ansible_password=ret123 ansible_become_pass=ret123
